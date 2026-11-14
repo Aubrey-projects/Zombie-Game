@@ -34,11 +34,6 @@ void Game::describeCurrentRoom() const {
         return;
     }
     std::cout << "\n" << room->name << "\n" << room->description << "\n";
-    std::cout << "Exits:";
-    for (const auto& [direction, exit] : room-> exits) {
-        std::cout << " " << direction;
-    }
-    std::cout << "\n";
 }
 
 void Game::handleGo(const std::string& direction) {
@@ -49,11 +44,11 @@ void Game::handleGo(const std::string& direction) {
     const Room* room = world_.getRoom(state_.currentRoomId);
     if (room == nullptr) return;
 
-    auto it = room->exits.find(direction);
-    if (it == room->exits.end()) {
+    const Exit* exit = room->findExit(direction);
+    if (exit == nullptr) {
         std::cout << "You can't go that way.\n";
         return;
     }
-    state_.currentRoomId = it->second.targetRoomId;
+    state_.currentRoomId = exit->targetRoomId;
     describeCurrentRoom();
 }

@@ -7,6 +7,8 @@ class World {
     public:
         void addRoom(const Room& room);
 
+        void checkExits() const;
+
         const Room* getRoom(const std::string& id) const;
 
     private:

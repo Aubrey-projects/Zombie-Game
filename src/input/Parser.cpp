@@ -6,8 +6,9 @@
 Command Parser::parse(const std::string& line) const {
     static const std::unordered_map<std::string, std::string> synonyms = {
         {"walk", "go"}, {"move", "go"},
-        {"l", "look"}, {"q", "quit"},
-        {"exit", "quit"}
+        {"enter", "go"}, {"climb", "go"},
+        {"l", "look"}, {"examine", "look"},
+        {"q", "quit"}, {"exit", "quit"}
     };
     static const std::unordered_set<std::string> fillers = {"the", "a", "an", "to"};
     

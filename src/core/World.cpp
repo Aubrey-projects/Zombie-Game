@@ -1,4 +1,5 @@
 #include "core/World.h"
+#include <iostream>
 
 void World::addRoom(const Room& room) {
     rooms_[room.id] = room;
