@@ -5,6 +5,5 @@
 #include "core/GameState.h"
 #include "core/World.h"
 
-
 // This declares buildWorld, but doesn't include its code
 void buildWorld(World& world, GameState& state);
