@@ -1,6 +1,9 @@
+// This connects it to its header
 #include "content/Content.h"
 
+// This function is to build the world
 void buildWorld(World& world, GameState& state) {
+    // This creates the airlock in the bunker and defines its variables
     Room airlock;
     airlock.id = "airlock";
     airlock.name = "Airlock";
@@ -8,6 +11,7 @@ void buildWorld(World& world, GameState& state) {
     airlock.exits["heavy steel door"] = {"common_area", {"steel door", "door", "left"}};
     airlock.exits["hatch"] = {"outside", {"rusted steel ladder", "steel ladder", "rusted ladder", "ladder"}};
 
+    // This creates the common area in the bunker and defines its variables
     Room common_area;
     common_area.id = "common_area";
     common_area.name = "Common Area";
@@ -17,19 +21,21 @@ void buildWorld(World& world, GameState& state) {
     common_area.exits["large yellow door"] = {"generator_room", {"yellow door"}};
     common_area.exits["doorway"] = {"hallway", {"hallway"}};
 
-
+    // This creates the food storage area in the bunker and defines its variables
     Room food_storage;
     food_storage.id = "food_storage";
     food_storage.name = "Food Storage";
     food_storage.description = "You are in a long room with mostly empty shelves of food, with just a few cans sitting ontop of them.\nOn one side of the room there is a large refrigerator and freezer.\nThere is also the wooden door that you just came through.";
     food_storage.exits["wooden door"] = {"common_area"};
 
+    // This creates the generator room in the bunker and defines its variables
     Room generator_room;
     generator_room.id = "generator_room";
     generator_room.name = "Generator Room";
     generator_room.description = "Inside the large yellow door, there is a dark concrete room with blinking lights and heavy sounds of machinery.\nIt appears to be a generator room. To the left of you, you see cans of propane.";
     generator_room.exits["large yellow door"] = {"common_area", {"yellow door"}};
 
+    // This creates the hallway in the bunker and defines its variables
     Room hallway;
     hallway.id = "hallway";
     hallway.name = "Hallway";
@@ -40,24 +46,28 @@ void buildWorld(World& world, GameState& state) {
     hallway.exits["wooden door with no plaque"] = {"bedroom_3", {"nobody's room", "door with no plaque"}};
     hallway.exits["white door"] = {"showers"};
 
+    // This creates a bedroom in the bunker and defines its variables
     Room bedroom_1;
     bedroom_1.id = "bedroom_1";
     bedroom_1.name = "Your Bedroom.";
     bedroom_1.description = "You are in a room with a wooden door on one side, and a bed on the other.\nThe bed is messily made, and to the right of it there is a desk with a medical kit.\nThere is also a closet holding a few different t-shirts and pants.";
     bedroom_1.exits["wooden door"] = {"hallway", {"door"}};
 
+    // This creates another bedroom in the bunker and defines its variables
     Room bedroom_2;
     bedroom_2.id = "bedroom_2";
     bedroom_2.name = "Cody's Bedroom";
     bedroom_2.description = "You are in a room with a neatly made bed with a desk next to it that has a potted plant.\nOn one side of the room there is a closet sporting many kinds of clothes, and a wooden door that you came through.";
     bedroom_2.exits["wooden door"] = {"hallway", {"door"}};
 
+    // This creates another bedroom in the bunker and defines its variables
     Room bedroom_3;
     bedroom_3.id = "bedroom_3";
     bedroom_3.name = "Unclaimed Bedroom";
     bedroom_3.description = "You are in a room with a bare mattress, desk, and an empty closet.\nThere is also the wooden door you came from.";
     bedroom_3.exits["wooden door"] = {"hallway", {"door"}};
 
+    // This creates the room with the showers in the bunker and defines its variables
     Room showers;
     showers.id = "showers";
     showers.name = "Showers";
@@ -65,6 +75,7 @@ void buildWorld(World& world, GameState& state) {
     showers.exits["white door"] = {"hallway", {"door"}};
     showers.exits["curtain"] = {"bathroom"};
 
+    // This creates the bathroom in the bunker and defines its variables
     Room bathroom;
     bathroom.id = "bathroom";
     bathroom.name = "Bathroom";
@@ -72,6 +83,7 @@ void buildWorld(World& world, GameState& state) {
     bathroom.exits["curtain"] = {"showers"};
     bathroom.exits["large steel door"] = {"escape_tunnel", {"steel door", "door"}};
 
+    // This creates the escape tunnel in the bunker and defines its variables
     Room escape_tunnel;
     escape_tunnel.id = "escape_tunnel";
     escape_tunnel.name = "Escape Tunnel";
@@ -79,7 +91,7 @@ void buildWorld(World& world, GameState& state) {
     escape_tunnel.exits["large steel door"] = {"bathroom", {"steel door", "door"}};
     escape_tunnel.exits["stairs"] = {"surface"};
 
-
+    // This will add each one to the world
     world.addRoom(airlock);
     world.addRoom(common_area);
     world.addRoom(food_storage);
@@ -92,5 +104,6 @@ void buildWorld(World& world, GameState& state) {
     world.addRoom(bathroom);
     world.addRoom(escape_tunnel);
 
+    // This defines which of these rooms will be the one that you start in
     state.currentRoomId = "bedroom_1";
 }
